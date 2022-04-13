@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package header;
+
+option go_package = "./zRPC";
+    
+message Header{
+  int32 id = 1;
+  string header = 2;
+}
+
+message AddHeaderResponse {
+  int32 id = 1;
+}
+
+message ModifyHeaderResponse {
+  int32 id = 1;
+}
+
+message RetrieveHeaderRequest {
+  int32 id = 1;
+}
+
+service HeaderService { 
+    rpc Add(Header) returns (AddHeaderResponse) {}
+    rpc Modify(Header) returns (ModifyHeaderResponse) {}
+    rpc Retrieve(RetrieveHeaderRequest) returns (Header) {}
+}
